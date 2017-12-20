@@ -23,15 +23,15 @@ async function createLoop(page, array) {
 }
 
 async function createPage(id, page) {
-	const base = 'https://money.yandex.ru/shop.xml?scid=';
-	const status = await page.open(`${base}${id}`);
+	const base = 'https://www.ozon.ru/context/detail/id/135968167/';
+	const status = await page.open(base);
 	console.log(`${status} -> ${id}`);
 	const title = await page.evaluate(function() {
 		return document.title;
 	});
 	const titleEscaped = title.replace(/\//g, '');
 
-	const render = await page.render(`./prod/${id} - ${titleEscaped}.png`);
+	const render = await page.render(`./prod/ozon.png`);
 	console.log(await title);
 }
 
